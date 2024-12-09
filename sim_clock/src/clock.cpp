@@ -51,7 +51,7 @@ SimClock::SimClock() :
     reconfigure_server_.reset(
         new ReconfigureServer(dr_mutex_, nh_private_));
     dynamic_reconfigure::Server<sim_clock::ClockConfig>::CallbackType scrc =
-      boost::bind(&SimClock::reconfigureCallback, this, boost::placeholders::_1, boost::placeholders::_2);
+      boost::bind(&SimClock::reconfigureCallback, this, boost::arg<1>(), boost::arg<2>() );
     reconfigure_server_->setCallback(scrc);
   }
 
